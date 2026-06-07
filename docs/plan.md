@@ -8,13 +8,11 @@
 
 | Rôle | Périmètre | Responsabilités clés |
 |------|-----------|----------------------|
-| **BE-Lead** — Back-end & Intégration | `server/` · contrats API · CI du monorepo | Modèles Mongoose, routes REST, logique de réservation, revue des PR back-end, **pont entre back et front**, collection Postman, résolution des blocages d'intégration |
-| **BE-Dev** — Back-end | `server/` | Middleware, validation, gestion d'erreurs, tests API, documentation `.env.example`, support sur les query params (filtres, pagination, recherche) |
-| **FE-Lead** — Front-end | `client/` · architecture UI | Routing React, design system (`tokens.css`), composants layout (`Navbar`), revue des PR front-end, cohérence visuelle globale |
-| **FE-Dev 1** — Front-end | `client/src/pages/` · catalogue | `HomePage`, `EventCatalog`, `EventCard`, `CategoryFilter`, pagination et filtres côté UI |
-| **FE-Dev 2** — Front-end | `client/src/pages/` · parcours participant | `EventDetail`, `BookingModal`, `TicketSuccess`, `MyTickets`, couche API client |
-
-> Remplacez les identifiants **BE-Lead**, **BE-Dev**, **FE-Lead**, **FE-Dev 1**, **FE-Dev 2** par les noms réels de l'équipe dès la kickoff.
+| **ALIM** — Back-end & Intégration | `server/` · contrats API · CI du monorepo | Modèles Mongoose, routes REST, logique de réservation, revue des PR back-end, **pont entre back et front**, collection Postman, résolution des blocages d'intégration |
+| **SERAPHIN** — Back-end | `server/` | Middleware, validation, gestion d'erreurs, tests API, documentation `.env.example`, support sur les query params (filtres, pagination, recherche) |
+| **LAOUAL** — Front-end | `client/` · architecture UI | Routing React, design system (`tokens.css`), composants layout (`Navbar`), revue des PR front-end, cohérence visuelle globale |
+| **SAMUEL** — Front-end | `client/src/pages/` · catalogue | `HomePage`, `EventCatalog`, `EventCard`, `CategoryFilter`, pagination et filtres côté UI |
+| **DJENABOU** — Front-end | `client/src/pages/` · parcours participant | `EventDetail`, `BookingModal`, `TicketSuccess`, `MyTickets`, couche API client |
 
 ---
 
@@ -24,36 +22,36 @@
 
 1. **Une branche par tâche** — nommage : `feat/be-event-model`, `feat/fe-event-catalog`, `fix/be-capacity-check`.
 2. **Pull request obligatoire** — au moins une relecture avant merge sur `develop`.
-3. **BE-Lead valide tout contrat API** avant que le front-end ne consomme une route.
-4. **FE-Lead valide toute contribution UI** avant merge (design system, responsive, accessibilité).
+3. **ALIM valide tout contrat API** avant que le front-end ne consomme une route.
+4. **LAOUAL valide toute contribution UI** avant merge (design system, responsive, accessibilité).
 5. **Daily standup** — 15 minutes, même horaire chaque jour : hier / aujourd'hui / blocages.
-6. **Canal d'intégration** — BE-Lead publie les changements d'API dans un message structuré (route, méthode, body, réponses).
+6. **Canal d'intégration** — ALIM publie les changements d'API dans un message structuré (route, méthode, body, réponses).
 
 ### 2.2 Points de synchronisation
 
 | Moment | Participants | Objectif |
 |--------|--------------|----------|
 | **Kickoff (J1 matin)** | Toute l'équipe | Lecture du périmètre MVP, assignation des rôles, création des branches |
-| **Sync API (J2 fin de journée)** | BE-Lead, BE-Dev, FE-Lead | Démo des 5 routes REST · remise de la collection Postman |
-| **Sync Intégration (J4 midi)** | BE-Lead, FE-Lead, FE-Dev 1 | Catalogue branché sur l'API · validation du format JSON |
-| **Sync Réservation (J5 fin de journée)** | BE-Lead, FE-Dev 2 | Parcours complet réservation → billet · test de capacité |
+| **Sync API (J2 fin de journée)** | ALIM, SERAPHIN, LAOUAL | Démo des 5 routes REST · remise de la collection Postman |
+| **Sync Intégration (J4 midi)** | ALIM, LAOUAL, SAMUEL | Catalogue branché sur l'API · validation du format JSON |
+| **Sync Réservation (J5 fin de journée)** | ALIM, DJENABOU | Parcours complet réservation → billet · test de capacité |
 | **Revue finale (J7 matin)** | Toute l'équipe | Checklist MVP, corrections, préparation démo |
 
 ### 2.3 Où travailler
 
 | Zone | Qui | Quoi |
 |------|-----|------|
-| `server/src/models/` | BE-Lead | Schémas Event, Ticket |
-| `server/src/routes/` · `controllers/` · `services/` | BE-Lead, BE-Dev | API REST |
-| `server/src/middleware/` | BE-Dev | Validation, erreurs |
-| `client/src/styles/` · `components/layout/` | FE-Lead | Design system, Navbar |
-| `client/src/components/events/` | FE-Dev 1 | EventCard, CategoryFilter, ProgressBar |
-| `client/src/pages/` (catalogue, accueil) | FE-Dev 1 | HomePage, EventCatalog |
-| `client/src/pages/` (détail, billet) | FE-Dev 2 | EventDetail, TicketSuccess, MyTickets |
-| `client/src/components/booking/` · `client/src/api/` | FE-Dev 2 | BookingModal, couche HTTP |
-| `client/src/pages/CreateEvent.jsx` | FE-Lead (J6) | Formulaire création · intégration POST |
-| `client/src/pages/Dashboard.jsx` | FE-Dev 1 (J6) | Suivi inscriptions · GET tickets |
-| `docs/` · `README.md` | BE-Lead + FE-Lead (J7) | Documentation finale |
+| `server/src/models/` | ALIM | Schémas Event, Ticket |
+| `server/src/routes/` · `controllers/` · `services/` | ALIM, SERAPHIN | API REST |
+| `server/src/middleware/` | SERAPHIN | Validation, erreurs |
+| `client/src/styles/` · `components/layout/` | LAOUAL | Design system, Navbar |
+| `client/src/components/events/` | SAMUEL | EventCard, CategoryFilter, ProgressBar |
+| `client/src/pages/` (catalogue, accueil) | SAMUEL | HomePage, EventCatalog |
+| `client/src/pages/` (détail, billet) | DJENABOU | EventDetail, TicketSuccess, MyTickets |
+| `client/src/components/booking/` · `client/src/api/` | DJENABOU | BookingModal, couche HTTP |
+| `client/src/pages/CreateEvent.jsx` | LAOUAL (J6) | Formulaire création · intégration POST |
+| `client/src/pages/Dashboard.jsx` | SAMUEL (J6) | Suivi inscriptions · GET tickets |
+| `docs/` · `README.md` | ALIM + LAOUAL (J7) | Documentation finale |
 
 ---
 
@@ -65,13 +63,13 @@
 
 | Qui | Quoi | Où | Livrable fin J1 |
 |-----|------|----|-----------------|
-| BE-Lead | Init serveur Express, connexion MongoDB, structure `server/src/` | `server/` | Serveur démarre sur `:5000`, health check `GET /api/health` |
-| BE-Lead | Schémas Mongoose `Event` et `Ticket` | `server/src/models/` | Modèles avec validations et index unique sur `reservationCode` |
-| BE-Dev | `.env.example`, scripts npm `dev`/`start`, middleware async wrapper | `server/` | Documentation des variables, `npm run dev` fonctionnel |
-| FE-Lead | Install deps front (`react-router-dom`, `axios`, `@fontsource/inter`) | `client/` | `package.json` à jour, routing de base |
-| FE-Lead | Tokens CSS, typographie Inter, reset global | `client/src/styles/` | `tokens.css` + import dans `index.css` |
-| FE-Dev 1 | Structure dossiers `pages/`, `components/`, `api/` | `client/src/` | Arborescence créée, pages vides routées |
-| FE-Dev 2 | Instance axios, fichier `api/client.js` | `client/src/api/` | Client HTTP configuré avec `VITE_API_URL` |
+| ALIM | Init serveur Express, connexion MongoDB, structure `server/src/` | `server/` | Serveur démarre sur `:5000`, health check `GET /api/health` |
+| ALIM | Schémas Mongoose `Event` et `Ticket` | `server/src/models/` | Modèles avec validations et index unique sur `reservationCode` |
+| SERAPHIN | `.env.example`, scripts npm `dev`/`start`, middleware async wrapper | `server/` | Documentation des variables, `npm run dev` fonctionnel |
+| LAOUAL | Install deps front (`react-router-dom`, `axios`, `@fontsource/inter`) | `client/` | `package.json` à jour, routing de base |
+| LAOUAL | Tokens CSS, typographie Inter, reset global | `client/src/styles/` | `tokens.css` + import dans `index.css` |
+| SAMUEL | Structure dossiers `pages/`, `components/`, `api/` | `client/src/` | Arborescence créée, pages vides routées |
+| DJENABOU | Instance axios, fichier `api/client.js` | `client/src/api/` | Client HTTP configuré avec `VITE_API_URL` |
 
 **Critère de sortie J1 :** `npm run dev` fonctionne côté client et serveur. MongoDB connecté. Routes vides mais structure en place.
 
@@ -83,16 +81,16 @@
 
 | Qui | Quoi | Où | Livrable fin J2 |
 |-----|------|----|-----------------|
-| BE-Lead | `POST /api/events`, `GET /api/events`, `GET /api/events/:id` | `server/src/` | CRUD événements opérationnel |
-| BE-Lead | Logique de réservation complète + incrément atomique `bookedCount` | `server/src/services/` | `POST /api/events/:id/tickets` avec contrôle capacité |
-| BE-Dev | `GET /api/events/:id/tickets`, validation `express-validator` | `server/src/` | Liste billets + messages d'erreur standardisés |
-| BE-Dev | Middleware gestion d'erreurs global, codes métier (`EVENT_FULL`, etc.) | `server/src/middleware/` | Réponses JSON uniformes |
-| BE-Lead | Collection Postman / Thunder Client exportée | `docs/postman/` | Fichier partagé avec l'équipe front |
-| FE-Lead | Composant `Navbar` conforme maquettes | `client/src/components/layout/` | Navigation fonctionnelle sur toutes les routes |
-| FE-Dev 1 | Composant `EventCard` (statique, données mockées) | `client/src/components/events/` | Carte visuelle avec indicateur de places |
-| FE-Dev 2 | Fonctions `api/events.js` et `api/tickets.js` (prêtes, non branchées) | `client/src/api/` | Signatures alignées sur le contrat J2 |
+| ALIM | `POST /api/events`, `GET /api/events`, `GET /api/events/:id` | `server/src/` | CRUD événements opérationnel |
+| ALIM | Logique de réservation complète + incrément atomique `bookedCount` | `server/src/services/` | `POST /api/events/:id/tickets` avec contrôle capacité |
+| SERAPHIN | `GET /api/events/:id/tickets`, validation `express-validator` | `server/src/` | Liste billets + messages d'erreur standardisés |
+| SERAPHIN | Middleware gestion d'erreurs global, codes métier (`EVENT_FULL`, etc.) | `server/src/middleware/` | Réponses JSON uniformes |
+| ALIM | Collection Postman / Thunder Client exportée | `docs/postman/` | Fichier partagé avec l'équipe front |
+| LAOUAL | Composant `Navbar` conforme maquettes | `client/src/components/layout/` | Navigation fonctionnelle sur toutes les routes |
+| SAMUEL | Composant `EventCard` (statique, données mockées) | `client/src/components/events/` | Carte visuelle avec indicateur de places |
+| DJENABOU | Fonctions `api/events.js` et `api/tickets.js` (prêtes, non branchées) | `client/src/api/` | Signatures alignées sur le contrat J2 |
 
-**Critère de sortie J2 :** Toutes les routes testées manuellement. BE-Lead anime la **Sync API** en fin de journée.
+**Critère de sortie J2 :** Toutes les routes testées manuellement. ALIM anime la **Sync API** en fin de journée.
 
 ---
 
@@ -102,13 +100,13 @@
 
 | Qui | Quoi | Où | Livrable fin J3 |
 |-----|------|----|-----------------|
-| FE-Lead | Routing complet des 7 écrans, layout wrapper | `client/src/App.jsx` | Navigation entre toutes les pages (contenu placeholder OK) |
-| FE-Lead | Composants UI atomiques : boutons, champs, badges | `client/src/components/ui/` | Bibliothèque interne cohérente avec le design system |
-| FE-Dev 1 | `CategoryFilter`, `ProgressBar` | `client/src/components/events/` | Filtres cliquables + jauge capacité |
-| FE-Dev 1 | `HomePage` — hero, catégories, CTA | `client/src/pages/HomePage.jsx` | Page d'accueil fidèle à la maquette |
-| FE-Dev 2 | `BookingModal` — formulaire nom + matricule | `client/src/components/booking/` | Modal avec validation locale, états loading/error |
-| BE-Dev | Query params : `category`, `search`, `page`, `limit` sur `GET /events` | `server/src/` | Filtrage et pagination côté serveur |
-| BE-Lead | Revue PR back-end, support intégration | — | Aucun blocage API ouvert |
+| LAOUAL | Routing complet des 7 écrans, layout wrapper | `client/src/App.jsx` | Navigation entre toutes les pages (contenu placeholder OK) |
+| LAOUAL | Composants UI atomiques : boutons, champs, badges | `client/src/components/ui/` | Bibliothèque interne cohérente avec le design system |
+| SAMUEL | `CategoryFilter`, `ProgressBar` | `client/src/components/events/` | Filtres cliquables + jauge capacité |
+| SAMUEL | `HomePage` — hero, catégories, CTA | `client/src/pages/HomePage.jsx` | Page d'accueil fidèle à la maquette |
+| DJENABOU | `BookingModal` — formulaire nom + matricule | `client/src/components/booking/` | Modal avec validation locale, états loading/error |
+| SERAPHIN | Query params : `category`, `search`, `page`, `limit` sur `GET /events` | `server/src/` | Filtrage et pagination côté serveur |
+| ALIM | Revue PR back-end, support intégration | — | Aucun blocage API ouvert |
 
 **Critère de sortie J3 :** Navigation fluide. Composants réutilisables prêts. API paginée disponible.
 
@@ -120,12 +118,12 @@
 
 | Qui | Quoi | Où | Livrable fin J4 |
 |-----|------|----|-----------------|
-| FE-Dev 1 | `EventCatalog` — grille, recherche, filtres, pagination | `client/src/pages/EventCatalog.jsx` | `GET /api/events` branché, 6 events/page |
-| FE-Dev 1 | États loading (skeleton), empty, error | `EventCatalog` | UX robuste sur échec réseau |
-| FE-Dev 2 | `EventDetail` — breadcrumb, infos, bloc réservation sticky | `client/src/pages/EventDetail.jsx` | `GET /api/events/:id`, bouton désactivé si complet |
-| FE-Dev 2 | Intégration `BookingModal` sur EventDetail | `EventDetail` + `BookingModal` | Ouverture modal au clic « Réserver » |
-| FE-Lead | Revue responsive EventCard + Catalog (mobile/tablet/desktop) | — | Grille 1/2/3 colonnes validée |
-| BE-Lead | Support intégration, corrections contrat si nécessaire | — | **Sync Intégration** à midi |
+| SAMUEL | `EventCatalog` — grille, recherche, filtres, pagination | `client/src/pages/EventCatalog.jsx` | `GET /api/events` branché, 6 events/page |
+| SAMUEL | États loading (skeleton), empty, error | `EventCatalog` | UX robuste sur échec réseau |
+| DJENABOU | `EventDetail` — breadcrumb, infos, bloc réservation sticky | `client/src/pages/EventDetail.jsx` | `GET /api/events/:id`, bouton désactivé si complet |
+| DJENABOU | Intégration `BookingModal` sur EventDetail | `EventDetail` + `BookingModal` | Ouverture modal au clic « Réserver » |
+| LAOUAL | Revue responsive EventCard + Catalog (mobile/tablet/desktop) | — | Grille 1/2/3 colonnes validée |
+| ALIM | Support intégration, corrections contrat si nécessaire | — | **Sync Intégration** à midi |
 
 **Critère de sortie J4 :** Un utilisateur peut parcourir le catalogue et consulter le détail d'un événement avec données réelles.
 
@@ -137,12 +135,12 @@
 
 | Qui | Quoi | Où | Livrable fin J5 |
 |-----|------|----|-----------------|
-| FE-Dev 2 | Brancher `POST /api/events/:id/tickets` dans BookingModal | `BookingModal` | Réservation fonctionnelle, anti double-soumission |
-| FE-Dev 2 | `TicketSuccess` — billet visuel, QR code, code-barres | `client/src/pages/TicketSuccess.jsx` | Redirection `/ticket/:code`, design soigné |
-| FE-Dev 2 | `MyTickets` — liste locale ou par matricule (MVP) | `client/src/pages/MyTickets.jsx` | Consultation des billets réservés (session/localStorage) |
-| BE-Lead | Tests de charge limite : réserver place 101 sur capacité 100 | — | Retour `400 EVENT_FULL` confirmé |
-| BE-Dev | Tests edge cases : event inexistant, champs manquants, code dupliqué | — | Tous les cas documentés dans Postman |
-| FE-Lead | Revue TicketSuccess sur iPhone SE (375 px) | — | Billet lisible, QR scannable |
+| DJENABOU | Brancher `POST /api/events/:id/tickets` dans BookingModal | `BookingModal` | Réservation fonctionnelle, anti double-soumission |
+| DJENABOU | `TicketSuccess` — billet visuel, QR code, code-barres | `client/src/pages/TicketSuccess.jsx` | Redirection `/ticket/:code`, design soigné |
+| DJENABOU | `MyTickets` — liste locale ou par matricule (MVP) | `client/src/pages/MyTickets.jsx` | Consultation des billets réservés (session/localStorage) |
+| ALIM | Tests de charge limite : réserver place 101 sur capacité 100 | — | Retour `400 EVENT_FULL` confirmé |
+| SERAPHIN | Tests edge cases : event inexistant, champs manquants, code dupliqué | — | Tous les cas documentés dans Postman |
+| LAOUAL | Revue TicketSuccess sur iPhone SE (375 px) | — | Billet lisible, QR scannable |
 
 **Critère de sortie J5 :** Parcours complet : catalogue → détail → réservation → billet. **Sync Réservation** en fin de journée.
 
@@ -154,11 +152,11 @@
 
 | Qui | Quoi | Où | Livrable fin J6 |
 |-----|------|----|-----------------|
-| FE-Lead | `CreateEvent` — formulaire guidé, aperçu dynamique, compteur 500 car. | `client/src/pages/CreateEvent.jsx` | `POST /api/events`, redirection catalogue |
-| FE-Dev 1 | `Dashboard` — liste billets par événement, ProgressBar | `client/src/pages/Dashboard.jsx` | `GET /api/events/:id/tickets` |
-| FE-Dev 1 | Validation formulaire création (date future, capacité ≥ 1) | `CreateEvent` | Messages d'erreur inline |
-| BE-Dev | Validation serveur miroir (date future, longueurs max) | `server/src/middleware/` | Cohérence front/back sur les règles |
-| BE-Lead | Revue intégration globale, correction des régressions | — | Tous les parcours MVP testés |
+| LAOUAL | `CreateEvent` — formulaire guidé, aperçu dynamique, compteur 500 car. | `client/src/pages/CreateEvent.jsx` | `POST /api/events`, redirection catalogue |
+| SAMUEL | `Dashboard` — liste billets par événement, ProgressBar | `client/src/pages/Dashboard.jsx` | `GET /api/events/:id/tickets` |
+| SAMUEL | Validation formulaire création (date future, capacité ≥ 1) | `CreateEvent` | Messages d'erreur inline |
+| SERAPHIN | Validation serveur miroir (date future, longueurs max) | `server/src/middleware/` | Cohérence front/back sur les règles |
+| ALIM | Revue intégration globale, correction des régressions | — | Tous les parcours MVP testés |
 
 **Critère de sortie J6 :** Organisateur peut créer un événement et suivre les inscriptions. Participant peut réserver et obtenir un billet.
 
@@ -170,12 +168,12 @@
 
 | Qui | Quoi | Où | Livrable fin J7 |
 |-----|------|----|-----------------|
-| FE-Lead | Passe responsive sur tous les écrans | `client/` | Mobile, tablette, desktop validés |
-| FE-Dev 1 | Corrections bugs catalogue, pagination, filtres | `client/` | Aucun bug bloquant P0 |
-| FE-Dev 2 | Corrections bugs billet, modal, edge cases 404 | `client/` | Page 404 gracieuse |
-| BE-Dev | Performance API, logs propres, `.env.example` final | `server/` | Réponses < 500 ms |
-| BE-Lead | README final, vérification checklist MVP, script démo | `README.md` | Instructions reproductibles |
-| FE-Lead + BE-Lead | **Revue finale** — checklist ci-dessous | — | Go / No-Go démo |
+| LAOUAL | Passe responsive sur tous les écrans | `client/` | Mobile, tablette, desktop validés |
+| SAMUEL | Corrections bugs catalogue, pagination, filtres | `client/` | Aucun bug bloquant P0 |
+| DJENABOU | Corrections bugs billet, modal, edge cases 404 | `client/` | Page 404 gracieuse |
+| SERAPHIN | Performance API, logs propres, `.env.example` final | `server/` | Réponses < 500 ms |
+| ALIM | README final, vérification checklist MVP, script démo | `README.md` | Instructions reproductibles |
+| LAOUAL + ALIM | **Revue finale** — checklist ci-dessous | — | Go / No-Go démo |
 
 **Critère de sortie J7 :** MVP livrable, démo prête, documentation à jour.
 
@@ -185,7 +183,7 @@
 
 Légende : **R** = Responsable · **A** = Approbateur · **C** = Consulté · **I** = Informé
 
-| Livrable | BE-Lead | BE-Dev | FE-Lead | FE-Dev 1 | FE-Dev 2 |
+| Livrable | ALIM | SERAPHIN | LAOUAL | SAMUEL | DJENABOU |
 |----------|---------|--------|---------|----------|----------|
 | Modèles Mongoose | **R/A** | C | I | I | I |
 | Routes REST | **R/A** | **R** | C | I | C |
@@ -235,11 +233,11 @@ Légende : **R** = Responsable · **A** = Approbateur · **C** = Consulté · **
 
 | Risque | Impact | Mitigation | Responsable |
 |--------|--------|------------|-------------|
-| MongoDB non disponible localement | Bloquant J1 | Utiliser MongoDB Atlas (cluster gratuit), URI partagée via `.env.example` | BE-Lead |
-| Contrat API instable | Retard front J4 | Gel du contrat après Sync J2 ; versioning des réponses | BE-Lead |
-| Divergence visuelle | Note UI basse | FE-Lead valide chaque PR ; tokens CSS centralisés | FE-Lead |
-| Collision `reservationCode` | Erreur 500 rare | Retry avec régénération côté serveur | BE-Lead |
-| Déséquilibre de charge équipe | Retard J6/J7 | BE-Lead et FE-Lead réallouent les tâches P2 en fin de sprint | BE-Lead + FE-Lead |
+| MongoDB non disponible localement | Bloquant J1 | Utiliser MongoDB Atlas (cluster gratuit), URI partagée via `.env.example` | ALIM |
+| Contrat API instable | Retard front J4 | Gel du contrat après Sync J2 ; versioning des réponses | ALIM |
+| Divergence visuelle | Note UI basse | LAOUAL valide chaque PR ; tokens CSS centralisés | LAOUAL |
+| Collision `reservationCode` | Erreur 500 rare | Retry avec régénération côté serveur | ALIM |
+| Déséquilibre de charge équipe | Retard J6/J7 | ALIM et LAOUAL réallouent les tâches P2 en fin de sprint | ALIM + LAOUAL |
 
 ---
 
@@ -255,7 +253,7 @@ J1 Setup
  │                        └── J7 Finitions
 ```
 
-**Règle :** Aucune page front-end ne consomme une route API non validée par BE-Lead.
+**Règle :** Aucune page front-end ne consomme une route API non validée par ALIM.
 
 ---
 
@@ -265,7 +263,7 @@ J1 Setup
 |-------|-------|
 | Standup quotidien | Avancement, blocages, réajustements |
 | PR GitHub | Revue de code, traçabilité |
-| Message structuré (BE-Lead) | Annonce de changement de contrat API |
+| Message structuré (ALIM) | Annonce de changement de contrat API |
 | `docs/plan.md` | Ce document — mis à jour si réallocation |
 | `docs/architecture.md` | Référence technique — mise à jour si décision architecturale |
 
@@ -273,7 +271,7 @@ J1 Setup
 
 ## 9. Prochaines actions immédiates
 
-1. **Attribuer les noms** aux rôles BE-Lead, BE-Dev, FE-Lead, FE-Dev 1, FE-Dev 2.
+1. **Attribuer les noms** aux rôles ALIM, SERAPHIN, LAOUAL, SAMUEL, DJENABOU.
 2. **Créer la branche `develop`** et protéger `main`.
 3. **Provisionner MongoDB** (local ou Atlas) et partager l'URI via un canal sécurisé (pas dans Git).
 4. **Kickoff J1** — valider ce plan, lancer le setup parallèle back/front.
