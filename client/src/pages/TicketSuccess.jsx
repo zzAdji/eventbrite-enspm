@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { QRCodeSVG } from 'qrcode.react'; // Importation de la bibliothèque QR code
 
 const TicketSuccess = () => {
   const { code } = useParams(); // Récupère le code de réservation unique depuis l'URL
@@ -54,9 +55,15 @@ const TicketSuccess = () => {
           <span style={styles.codeLabel}>Code de Réservation</span>
           <span style={styles.codeValue}>{code}</span>
           
-          <div style={styles.qrPlaceholder}>
-            {/* Box visuelle du ticket en attendant la dépendance QR */}
-            <span style={{ fontSize: '12px', color: '#8E8E93' }}>[ Code Unique : {code} ]</span>
+          {/* Vrai QR Code réclamé par le sujet */}
+          <div style={styles.qrContainer}>
+            <QRCodeSVG 
+              value={code || "Faux-Billet-ENSPM"} 
+              size={130}
+              bgColor={"#FFFFFF"}
+              fgColor={"#0A0A0A"}
+              level={"M"}
+            />
           </div>
           <span style={styles.miniCaption}>Scannez pour valider l'entrée</span>
         </div>
@@ -203,7 +210,6 @@ const styles = {
   codeLabel: {
     fontSize: '11px',
     color: '#8E8E93',
-    textTransform: 'uppercase',
   },
   codeValue: {
     fontSize: '20px',
@@ -212,16 +218,13 @@ const styles = {
     letterSpacing: '2px',
     margin: '6px 0 16px 0',
   },
-  qrPlaceholder: {
-    padding: '30px',
+  qrContainer: {
+    padding: '12px',
     backgroundColor: '#F8F8FA',
     borderRadius: '12px',
-    border: '1px dashed #D1D1D6',
+    border: '1px solid #E5E5EA',
     display: 'inline-block',
     marginBottom: '8px',
-    width: '130px',
-    height: '130px',
-    boxSizing: 'border-box',
   },
   miniCaption: {
     fontSize: '11px',
