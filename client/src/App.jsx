@@ -4,11 +4,9 @@ import CreateEvent from './pages/CreateEvent';
 import HomePage from './pages/HomePage';
 import EventCatalog from './pages/EventCatalog';
 import Dashboard from './pages/Dashboard';
-
-// Placeholders for other pages (FE-Dev 2)
-const EventDetail = () => <div>Event Detail (P0)</div>;
-const TicketSuccess = () => <div>Ticket Success (P0)</div>;
-const MyTickets = () => <div>My Tickets (P1)</div>;
+import EventDetail from './pages/EventDetail';
+import TicketSuccess from './pages/TicketSuccess';
+import MyTickets from './pages/MyTickets';
 
 function App() {
   return (
