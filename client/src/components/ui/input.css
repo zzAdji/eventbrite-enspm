@@ -1,0 +1,70 @@
+.ui-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-md);
+}
+
+.ui-input-label {
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.ui-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.ui-input-field {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  appearance: none; /* for select */
+}
+
+.ui-input-field::placeholder {
+  color: #8E8E93;
+}
+
+.ui-input-field:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(88, 86, 214, 0.1);
+}
+
+.ui-input-field.is-error {
+  border-color: var(--color-danger);
+}
+
+.ui-input-field.is-error:focus {
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+}
+
+.ui-input-field.is-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+select.ui-input-field {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%233A3A3C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.ui-input-helper {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+}
+
+.ui-input-helper.is-error {
+  color: var(--color-danger);
+}
