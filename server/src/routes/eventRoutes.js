@@ -6,13 +6,18 @@ const {
   getEventById,
   reserveTicket,
 } = require('../controllers/eventController');
+const asyncHandler = require('../middleware/asyncHandler');
+const {
+  validate,
+  eventIdParam,
+  createEventRules,
+  reserveTicketRules,
+  getEventsQueryRules,
+} = require('../middleware/validator');
 
-// Événements
-router.post('/', createEvent);          // POST  /api/events
-router.get('/', getEvents);             // GET   /api/events
-router.get('/:id', getEventById);       // GET   /api/events/:id
-
-// Réservation
-router.post('/:id/tickets', reserveTicket);
+router.post('/', createEventRules, validate, asyncHandler(createEvent));
+router.get('/', getEventsQueryRules, validate, asyncHandler(getEvents));
+router.get('/:id', eventIdParam, validate, asyncHandler(getEventById));
+router.post('/:id/tickets', eventIdParam, reserveTicketRules, validate, asyncHandler(reserveTicket));
 
 module.exports = router;
