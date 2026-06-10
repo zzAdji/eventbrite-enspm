@@ -22,7 +22,7 @@
 
 ### 2.1 Règles de travail
 
-1. **Une branche par tâche** — nommage : `feat/be-event-model`, `feat/fe-event-catalog`, `fix/be-capacity-check`.
+1. **Une branche unique par développeur** — nommage obligatoire : `feat/be-lead`, `feat/be-dev`, `feat/fe-lead`, `feat/fe-dev-1`, `feat/fe-dev-2`.
 2. **Pull request obligatoire** — au moins une relecture avant merge sur `develop`.
 3. **BE-Lead valide tout contrat API** avant que le front-end ne consomme une route.
 4. **FE-Lead valide toute contribution UI** avant merge (design system, responsive, accessibilité).
@@ -39,21 +39,16 @@
 | **Sync Réservation (J5 fin de journée)** | BE-Lead, FE-Dev 2 | Parcours complet réservation → billet · test de capacité |
 | **Revue finale (J7 matin)** | Toute l'équipe | Checklist MVP, corrections, préparation démo |
 
-### 2.3 Où travailler
+### 2.3 Où travailler (Fichiers exacts)
 
-| Zone | Qui | Quoi |
-|------|-----|------|
-| `server/src/models/` | BE-Lead | Schémas Event, Ticket |
-| `server/src/routes/` · `controllers/` · `services/` | BE-Lead, BE-Dev | API REST |
-| `server/src/middleware/` | BE-Dev | Validation, erreurs |
-| `client/src/styles/` · `components/layout/` | FE-Lead | Design system, Navbar |
-| `client/src/components/events/` | FE-Dev 1 | EventCard, CategoryFilter, ProgressBar |
-| `client/src/pages/` (catalogue, accueil) | FE-Dev 1 | HomePage, EventCatalog |
-| `client/src/pages/` (détail, billet) | FE-Dev 2 | EventDetail, TicketSuccess, MyTickets |
-| `client/src/components/booking/` · `client/src/api/` | FE-Dev 2 | BookingModal, couche HTTP |
-| `client/src/pages/CreateEvent.jsx` | FE-Lead (J6) | Formulaire création · intégration POST |
-| `client/src/pages/Dashboard.jsx` | FE-Dev 1 (J6) | Suivi inscriptions · GET tickets |
-| `docs/` · `README.md` | BE-Lead + FE-Lead (J7) | Documentation finale |
+| Qui | Branche | Fichiers exacts à créer ou modifier |
+|-----|---------|-------------------------------------|
+| BE-Lead | `feat/be-lead` | `server/src/config/db.js`, `server/src/models/Event.js`, `server/src/models/Ticket.js`, `server/src/routes/eventRoutes.js`, `server/src/controllers/eventController.js`, `server/src/services/ticketService.js`, `server/src/services/reservationCodeService.js`, `docs/postman/...` |
+| BE-Dev | `feat/be-dev` | `server/.env.example`, `server/src/middleware/errorHandler.js`, `server/src/middleware/asyncHandler.js`, `server/src/middleware/validator.js`, `server/src/routes/ticketRoutes.js`, `server/src/controllers/ticketController.js` |
+| FE-Lead | `feat/fe-lead` | `client/src/styles/tokens.css`, `client/src/index.css`, `client/src/App.jsx`, `client/src/components/layout/Navbar.jsx`, `client/src/components/layout/Layout.jsx`, `client/src/components/ui/Button.jsx`, `client/src/components/ui/Input.jsx`, `client/src/pages/CreateEvent.jsx` |
+| FE-Dev 1 | `feat/fe-dev-1` | `client/src/components/events/EventCard.jsx`, `client/src/components/events/CategoryFilter.jsx`, `client/src/components/events/ProgressBar.jsx`, `client/src/pages/HomePage.jsx`, `client/src/pages/EventCatalog.jsx`, `client/src/pages/Dashboard.jsx` |
+| FE-Dev 2 | `feat/fe-dev-2` | `client/.env.example`, `client/src/api/client.js`, `client/src/api/events.js`, `client/src/api/tickets.js`, `client/src/components/booking/BookingModal.jsx`, `client/src/pages/EventDetail.jsx`, `client/src/pages/TicketSuccess.jsx`, `client/src/pages/MyTickets.jsx` |
+| FE-Lead + BE-Lead | Toutes | `docs/` · `README.md` (J7) Documentation finale |
 
 ---
 
