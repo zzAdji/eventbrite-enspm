@@ -1,0 +1,181 @@
+{
+  "info": {
+    "_postman_id": "eventbrite-enspm-api-v1",
+    "name": "EventBrite — API Collection",
+    "description": "Collection complète des routes REST de l'application EventBrite (ENSPM). Base URL : http://localhost:5000/api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🩺 Health Check",
+      "item": [
+        {
+          "name": "GET /api/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "Vérifie que le serveur est opérationnel."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📅 Événements",
+      "item": [
+        {
+          "name": "POST /api/events — Créer un événement",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Conférence Tech ENSPM 2026\",\n  \"description\": \"Une conférence sur les tendances technologiques actuelles animée par des experts du domaine.\",\n  \"eventDate\": \"2026-09-15T09:00:00.000Z\",\n  \"location\": \"Amphi 300, ENSPM\",\n  \"capacity\": 100,\n  \"category\": \"Technologie\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/events",
+              "host": ["{{base_url}}"],
+              "path": ["events"]
+            },
+            "description": "Crée un nouvel événement. Tous les champs sont obligatoires. La date doit être dans le futur."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/events — Lister tous les événements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/events",
+              "host": ["{{base_url}}"],
+              "path": ["events"]
+            },
+            "description": "Retourne les événements à venir, paginés (6 par page par défaut)."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/events — Filtrer par catégorie",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/events?category=Technologie",
+              "host": ["{{base_url}}"],
+              "path": ["events"],
+              "query": [{ "key": "category", "value": "Technologie" }]
+            },
+            "description": "Filtrer les événements par catégorie. Valeurs possibles : Concert, Conférence, Sport, Atelier, Technologie, Culture, Design."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/events — Recherche textuelle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/events?search=ENSPM",
+              "host": ["{{base_url}}"],
+              "path": ["events"],
+              "query": [{ "key": "search", "value": "ENSPM" }]
+            },
+            "description": "Recherche dans le titre et le lieu de l'événement (insensible à la casse)."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/events — Pagination (page 2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/events?page=2&limit=6",
+              "host": ["{{base_url}}"],
+              "path": ["events"],
+              "query": [
+                { "key": "page", "value": "2" },
+                { "key": "limit", "value": "6" }
+              ]
+            },
+            "description": "Récupère la deuxième page des événements, 6 par page."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/events/:id — Détail d'un événement",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/events/{{event_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["events", "{{event_id}}"]
+            },
+            "description": "Retourne le détail complet d'un événement par son ID MongoDB. Retourne 404 si introuvable."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🎫 Billets",
+      "item": [
+        {
+          "name": "POST /api/events/:id/tickets — Réserver une place",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"studentName\": \"Moussa Diallo\",\n  \"studentId\": \"ENS-2024-001\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/events/{{event_id}}/tickets",
+              "host": ["{{base_url}}"],
+              "path": ["events", "{{event_id}}", "tickets"]
+            },
+            "description": "Réserve une place pour un participant. Contrôle la capacité côté serveur. Retourne 400 EVENT_FULL si l'événement est complet."
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/events/:id/tickets — ⚠️ Test EVENT_FULL",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"studentName\": \"Test Limite\",\n  \"studentId\": \"ENS-TEST-999\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/events/{{event_id}}/tickets",
+              "host": ["{{base_url}}"],
+              "path": ["events", "{{event_id}}", "tickets"]
+            },
+            "description": "À utiliser sur un événement dont bookedCount = capacity. La réponse doit être 400 EVENT_FULL."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "event_id",
+      "value": "REMPLACER_PAR_UN_ID_MONGODB",
+      "type": "string"
+    }
+  ]
+}
