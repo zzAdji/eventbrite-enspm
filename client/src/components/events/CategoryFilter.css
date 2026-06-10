@@ -1,0 +1,41 @@
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.category-filter__pill {
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.category-filter__pill:hover {
+  border-color: var(--color-text-primary);
+}
+
+.category-filter__pill.is-active {
+  background-color: var(--color-btn-primary);
+  border-color: var(--color-btn-primary);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .category-filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: var(--spacing-xs);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-filter::-webkit-scrollbar {
+    display: none;
+  }
+}

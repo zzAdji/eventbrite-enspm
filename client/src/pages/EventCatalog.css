@@ -1,0 +1,212 @@
+.event-catalog {
+  width: 100%;
+}
+
+.catalog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.catalog-header__text h1 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.catalog-header__text p {
+  color: var(--color-text-secondary);
+  font-size: 17px;
+}
+
+.catalog-header__illustration {
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.catalog-toolbar {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.catalog-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  height: 48px;
+}
+
+.catalog-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+}
+
+.catalog-search input::placeholder {
+  color: #8E8E93;
+}
+
+.catalog-filters-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-lg);
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-card);
+  font-weight: 500;
+  font-size: 15px;
+  transition: background-color var(--transition-fast);
+}
+
+.catalog-filters-btn:hover {
+  background-color: #F2F2F7;
+}
+
+.catalog-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.catalog-sort {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.catalog-sort select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  background: var(--color-card);
+  cursor: pointer;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.catalog-state {
+  text-align: center;
+  padding: var(--spacing-xxxl) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+}
+
+.catalog-state--error {
+  border: 1px solid color-mix(in srgb, var(--color-danger) 30%, transparent);
+}
+
+.catalog-state--error button {
+  margin-top: var(--spacing-md);
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-btn-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.catalog-state--empty h2 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--spacing-sm);
+}
+
+.catalog-state--empty p {
+  color: var(--color-text-secondary);
+}
+
+.catalog-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) 0;
+}
+
+.catalog-pagination__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  transition: all var(--transition-fast);
+}
+
+.catalog-pagination__btn:hover:not(:disabled) {
+  border-color: var(--color-text-primary);
+}
+
+.catalog-pagination__btn.is-active {
+  background: var(--color-btn-primary);
+  border-color: var(--color-btn-primary);
+  color: #fff;
+}
+
+.catalog-pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.catalog-pagination__ellipsis {
+  color: var(--color-text-secondary);
+  padding: 0 4px;
+}
+
+@media (max-width: 1024px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .catalog-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .catalog-header__illustration {
+    display: none;
+  }
+
+  .catalog-toolbar {
+    flex-direction: column;
+  }
+
+  .catalog-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .catalog-sort {
+    justify-content: flex-end;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}
