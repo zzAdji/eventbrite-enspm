@@ -4,10 +4,11 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 
 const eventRoutes = require('./routes/eventRoutes');
+const ticketRoutes = require('./routes/ticketRoutes');
+const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 
-// Middlewares de base
 app.use(helmet());
 
 app.use(cors({
@@ -19,19 +20,20 @@ app.use(cors({
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Routes
 app.get('/api/health', (req, res) => {
   res.status(200).json({ success: true, message: 'Serveur opérationnel' });
 });
 
 app.use('/api/events', eventRoutes);
+app.use('/api/events', ticketRoutes);
 
-// Route inconnue (404)
 app.use((req, res) => {
   res.status(404).json({
     success: false,
     error: { code: 'NOT_FOUND', message: 'Route introuvable.' },
   });
 });
+
+app.use(errorHandler);
 
 module.exports = app;
